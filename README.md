@@ -4,7 +4,7 @@ Plataforma web de acompanhamento terapêutico, criada para apoiar profissionais 
 
 🔗 **Demo online:** [projetoterapia.vercel.app](https://projetoterapia.vercel.app)
 
----
+----
 
 ## ✨ Funcionalidades
 
