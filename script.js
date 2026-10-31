@@ -16,6 +16,8 @@ let sessions = JSON.parse(localStorage.getItem('girassol_sessions')) || [
     }
 ];
 
+let assessments = JSON.parse(localStorage.getItem('girassol_assessments')) || [];
+
 document.addEventListener('DOMContentLoaded', () => {
     initEvents();
     checkInitialState();
@@ -130,10 +132,29 @@ function initEvents() {
     if (assessmentForm) {
         assessmentForm.onsubmit = (e) => {
             e.preventDefault();
-            if (selectedMood) {
-                document.getElementById('dashUltimoHumor').textContent = selectedMood;
-                localStorage.setItem('girassol_ultimo_humor', selectedMood);
+
+            if (!selectedMood) {
+                showToast('Selecione como você se sentiu.', 'danger');
+                return;
             }
+            if (selectedRating === 0) {
+                showToast('Dê uma nota de 1 a 5 estrelas.', 'danger');
+                return;
+            }
+
+            assessments.unshift({
+                id: Date.now(),
+                date: new Date().toISOString(),
+                mood: selectedMood,
+                rating: selectedRating,
+                comment: document.getElementById('feedbackText').value.trim()
+            });
+            saveAssessments();
+            localStorage.setItem('girassol_ultimo_humor', selectedMood);
+
+            renderAssessments();
+            updateDashboard();
+            resetAssessmentForm();
             showToast('Obrigado pela sua avaliação! 🌻', 'success');
             closeModal();
         };
@@ -157,6 +178,7 @@ function showAppPlatform() {
     document.getElementById('authScreen').classList.add('hidden');
     document.getElementById('appContainer').classList.remove('hidden');
     renderSessions();
+    renderAssessments();
     updateDashboard();
 }
 
@@ -211,7 +233,7 @@ function renderSessions() {
     `).join('');
 }
 
-window.updateStatus = function(id, newStatus) {
+window.updateStatus = function (id, newStatus) {
     sessions = sessions.map(s => s.id === id ? { ...s, status: newStatus } : s);
     saveSessions();
     renderSessions();
@@ -246,8 +268,21 @@ function updateDashboard() {
         elUltimoHumor.textContent = savedHumor;
     }
 
+    const elNota = document.getElementById('dashNotaMedia');
+    const elNotaTotal = document.getElementById('dashNotaTotal');
+    if (elNota && elNotaTotal) {
+        if (assessments.length > 0) {
+            const media = assessments.reduce((acc, a) => acc + a.rating, 0) / assessments.length;
+            elNota.textContent = `${media.toFixed(1).replace('.', ',')} ★`;
+            elNotaTotal.textContent = `Baseado em ${assessments.length} avaliação(ões)`;
+        } else {
+            elNota.textContent = '—';
+            elNotaTotal.textContent = 'Nenhuma avaliação ainda';
+        }
+    }
+
     const proximas = sessions.filter(s => s.status !== 'Cancelada').sort((a, b) => new Date(a.date) - new Date(b.date));
-    
+
     if (proximas.length > 0 && elProxima && elProximaData) {
         elProxima.textContent = proximas[0].type;
         elProximaData.textContent = `${formatDate(proximas[0].date)} às ${proximas[0].time}`;
@@ -273,6 +308,49 @@ function formatDate(dateStr) {
     if (!dateStr) return '';
     const [year, month, day] = dateStr.split('-');
     return `${day}/${month}/${year}`;
+}
+
+function saveAssessments() {
+    localStorage.setItem('girassol_assessments', JSON.stringify(assessments));
+}
+
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
+function resetAssessmentForm() {
+    selectedMood = '';
+    selectedRating = 0;
+    document.querySelectorAll('#moodContainer .mood-btn').forEach(b => b.classList.remove('selected'));
+    document.querySelectorAll('#ratingStars span').forEach(s => s.classList.remove('active'));
+    document.getElementById('feedbackText').value = '';
+}
+
+function renderAssessments() {
+    const container = document.getElementById('assessmentsList');
+    if (!container) return;
+
+    if (assessments.length === 0) {
+        container.innerHTML = '<p class="subtitle">Nenhuma avaliação registrada ainda.</p>';
+        return;
+    }
+
+    container.innerHTML = assessments.map(a => {
+        const data = new Date(a.date).toLocaleDateString('pt-BR');
+        const estrelas = '★'.repeat(a.rating) + '☆'.repeat(5 - a.rating);
+        return `
+            <div class="session-card confirmada">
+                <div class="session-header">
+                    <span>${escapeHtml(a.mood)}</span>
+                    <span class="status-tag">${data}</span>
+                </div>
+                <p class="assessment-stars">${estrelas}</p>
+                ${a.comment ? `<p><strong>💬</strong> ${escapeHtml(a.comment)}</p>` : '<p class="subtitle">Sem comentários.</p>'}
+            </div>
+        `;
+    }).join('');
 }
 
 function showToast(message, type = 'success') {
