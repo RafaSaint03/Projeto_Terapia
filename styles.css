@@ -12,7 +12,7 @@
     --success: #10B981;
     --danger: #EF4444;
     --radius: 16px;
-    --shadow-sm: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.02);
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
     --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.04), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
     --shadow-hover: 0 20px 30px -10px rgba(0, 0, 0, 0.07);
 }
@@ -95,7 +95,9 @@ body {
 }
 
 /* Landing Page & Auth */
-.landing-page { width: 100%; }
+.landing-page {
+    width: 100%;
+}
 
 .hero-landing {
     padding: 60px 0 80px 0;
@@ -130,11 +132,25 @@ body {
     border: 1px solid var(--border-color);
 }
 
-.sunflower-banner span { font-size: 4.5rem; }
+.sunflower-banner span {
+    font-size: 4.5rem;
+}
 
-.features-section { padding: 80px 0; }
-.section-title { text-align: center; font-size: 2rem; margin-bottom: 10px; }
-.section-subtitle { text-align: center; color: var(--muted-text); margin-bottom: 50px; }
+.features-section {
+    padding: 80px 0;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: var(--muted-text);
+    margin-bottom: 50px;
+}
 
 .features-grid {
     display: grid;
@@ -151,7 +167,10 @@ body {
     text-align: center;
 }
 
-.feature-icon { font-size: 2.5rem; margin-bottom: 15px; }
+.feature-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
 
 .landing-cta {
     background-color: var(--light-yellow);
@@ -191,8 +210,14 @@ body {
     margin-bottom: 15px;
 }
 
-.auth-logo { text-align: center; margin-bottom: 20px; }
-.auth-logo span { font-size: 3.5rem; }
+.auth-logo {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.auth-logo span {
+    font-size: 3.5rem;
+}
 
 .credentials-hint {
     background-color: var(--light-yellow);
@@ -204,7 +229,7 @@ body {
 }
 
 .credentials-hint code {
-    background-color: rgba(0,0,0,0.06);
+    background-color: rgba(0, 0, 0, 0.06);
     padding: 2px 6px;
     border-radius: 4px;
 }
@@ -257,9 +282,19 @@ body {
     color: var(--danger);
 }
 
-.btn-block { width: 100%; }
-.btn-success { background-color: #DCFCE7; color: var(--success); }
-.btn-danger { background-color: #FEE2E2; color: var(--danger); }
+.btn-block {
+    width: 100%;
+}
+
+.btn-success {
+    background-color: #DCFCE7;
+    color: var(--success);
+}
+
+.btn-danger {
+    background-color: #FEE2E2;
+    color: var(--danger);
+}
 
 /* DASHBOARD DESIGN PROFISSIONAL */
 .dashboard-wrapper {
@@ -390,10 +425,25 @@ body {
     justify-content: center;
 }
 
-.metric-icon-box.yellow { background-color: #FEF9C3; color: #D97706; }
-.metric-icon-box.green { background-color: #D1FAE5; color: #059669; }
-.metric-icon-box.blue { background-color: #E0F2FE; color: #0284C7; }
-.metric-icon-box.amber { background-color: #FFEDD5; color: #EA580C; }
+.metric-icon-box.yellow {
+    background-color: #FEF9C3;
+    color: #D97706;
+}
+
+.metric-icon-box.green {
+    background-color: #D1FAE5;
+    color: #059669;
+}
+
+.metric-icon-box.blue {
+    background-color: #E0F2FE;
+    color: #0284C7;
+}
+
+.metric-icon-box.amber {
+    background-color: #FFEDD5;
+    color: #EA580C;
+}
 
 .metric-category {
     font-size: 0.88rem;
@@ -426,9 +476,17 @@ body {
 }
 
 /* Estruturas Complementares */
-.main-content { padding: 40px 24px; }
-.section { display: none; }
-.section.active { display: block; }
+.main-content {
+    padding: 40px 24px;
+}
+
+.section {
+    display: none;
+}
+
+.section.active {
+    display: block;
+}
 
 .card {
     background-color: var(--bg-card);
@@ -438,13 +496,36 @@ body {
     border: 1px solid var(--border-color);
 }
 
-.form-card { max-width: 600px; margin: 0 auto; }
-.subtitle { color: var(--muted-text); margin-bottom: 24px; }
-.form-group { margin-bottom: 20px; }
-.form-group label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 0.9rem; }
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-card {
+    max-width: 600px;
+    margin: 0 auto;
+}
 
-input, select, textarea {
+.subtitle {
+    color: var(--muted-text);
+    margin-bottom: 24px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+input,
+select,
+textarea {
     width: 100%;
     padding: 12px 14px;
     border: 1px solid #E5E7EB;
@@ -454,7 +535,9 @@ input, select, textarea {
     transition: border-color 0.2s;
 }
 
-input:focus, select:focus, textarea:focus {
+input:focus,
+select:focus,
+textarea:focus {
     border-color: var(--primary-hover);
 }
 
@@ -473,8 +556,14 @@ input:focus, select:focus, textarea:focus {
     box-shadow: var(--shadow-md);
 }
 
-.session-card.confirmada { border-left-color: var(--success); }
-.session-card.cancelada { border-left-color: var(--danger); opacity: 0.6; }
+.session-card.confirmada {
+    border-left-color: var(--success);
+}
+
+.session-card.cancelada {
+    border-left-color: var(--danger);
+    opacity: 0.6;
+}
 
 .session-header {
     display: flex;
@@ -490,14 +579,20 @@ input:focus, select:focus, textarea:focus {
     background-color: var(--light-yellow);
 }
 
-.session-actions { display: flex; gap: 10px; margin-top: 16px; }
+.session-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 16px;
+}
 
 /* Modais */
 .modal {
     display: none;
     position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background-color: rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(4px);
     z-index: 1000;
@@ -505,7 +600,9 @@ input:focus, select:focus, textarea:focus {
     justify-content: center;
 }
 
-.modal.active { display: flex; }
+.modal.active {
+    display: flex;
+}
 
 .modal-content {
     background-color: var(--bg-card);
@@ -514,12 +611,13 @@ input:focus, select:focus, textarea:focus {
     width: 90%;
     max-width: 450px;
     position: relative;
-    box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
 }
 
 .modal-close {
     position: absolute;
-    top: 18px; right: 20px;
+    top: 18px;
+    right: 20px;
     background: none;
     border: none;
     font-size: 1.5rem;
@@ -527,7 +625,12 @@ input:focus, select:focus, textarea:focus {
     color: var(--muted-text);
 }
 
-.mood-selector { display: flex; flex-wrap: wrap; gap: 8px; }
+.mood-selector {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
 .mood-btn {
     padding: 8px 14px;
     border: 1px solid #E5E7EB;
@@ -542,8 +645,15 @@ input:focus, select:focus, textarea:focus {
     border-color: var(--primary-yellow);
 }
 
-.rating-stars { font-size: 2rem; color: #D1D5DB; cursor: pointer; }
-.rating-stars span.active { color: var(--primary-yellow); }
+.rating-stars {
+    font-size: 2rem;
+    color: #D1D5DB;
+    cursor: pointer;
+}
+
+.rating-stars span.active {
+    color: var(--primary-yellow);
+}
 
 .footer {
     text-align: center;
@@ -554,18 +664,29 @@ input:focus, select:focus, textarea:focus {
 }
 
 @media (max-width: 900px) {
-    .dashboard-hero { grid-template-columns: 1fr; }
+    .dashboard-hero {
+        grid-template-columns: 1fr;
+    }
 }
 
 @media (max-width: 768px) {
-    .hero-content { grid-template-columns: 1fr; }
-    .form-row { grid-template-columns: 1fr; }
-    .mobile-toggle { display: block; }
+    .hero-content {
+        grid-template-columns: 1fr;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .mobile-toggle {
+        display: block;
+    }
 
     .nav-links {
         display: none;
         position: absolute;
-        top: 72px; left: 0;
+        top: 72px;
+        left: 0;
         width: 100%;
         background-color: var(--bg-card);
         flex-direction: column;
@@ -573,7 +694,9 @@ input:focus, select:focus, textarea:focus {
         box-shadow: var(--shadow-md);
     }
 
-    .nav-links.active { display: flex; }
+    .nav-links.active {
+        display: flex;
+    }
 }
 
 /* Garante que o ícone fique escondido em telas grandes */
@@ -590,4 +713,11 @@ input:focus, select:focus, textarea:focus {
     .mobile-toggle {
         display: block !important;
     }
+}
+
+.assessment-stars {
+    color: var(--primary-yellow);
+    font-size: 1.3rem;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
 }
